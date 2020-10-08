@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: db
+  username: postgres
+  password: ""
+development:
+  <<: *default
+  database: pdca_development
+test:
+  <<: *default
+  database: pdca_test
+production:
+  <<: *default
+  database: pdca_production
+  username: pdca
+  password: <%= ENV['PDCA_DATABASE_PASSWORD'] %>
